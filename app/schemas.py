@@ -14,13 +14,18 @@ class User(BaseModel): #Schema
     correo:str
     creacion:datetime = datetime.now()
 
-class UserId(BaseModel):
-    id:int
+class UpdateUser(BaseModel): #Schema
+    username:str = None
+    password:str = None
+    nombre:str = None
+    apellido:str = None
+    direccion:str = None
+    telefono:int = None
+    correo:str = None
 
 class ShowUser(BaseModel):
     username:str
     nombre:str
     correo:str
-    apellido:str
     class Config():
-        orm_mode = True
+        from_attributes = True
