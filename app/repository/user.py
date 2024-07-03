@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 from app.db import models
 
-
 def crear_usuario(usuario, db:Session):
     usuario = usuario.dict()
     nuevo_usuario = models.User(
