@@ -1,13 +1,15 @@
 from sqlalchemy.orm import Session
 from app.db import models
 from fastapi import HTTPException, status
+from app.hashing import Hash
+
 
 def crear_usuario(usuario, db:Session):
     usuario = usuario.dict()
     try:
         nuevo_usuario = models.User(
             username=usuario["username"],
-            password=usuario["password"],
+            password=Hash.hash_password(usuario["password"]),
             nombre=usuario["nombre"],
             apellido=usuario["apellido"],
             direccion=usuario["direccion"],
